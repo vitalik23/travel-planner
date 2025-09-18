@@ -1,0 +1,45 @@
+<div class="dashboard">
+    <div class="dashboard-header">
+        <h1 class="title">Travel Planner</h1>
+        <p class="description">Plan your perfect city trips with specific places and dates</p>
+    </div>
+
+    <div class="dashboard-content">
+        <div class="dashboard-search-cities">
+            <h2 class="title">Search Cities</h2>
+
+            <div class="form-group">
+                <p-autocomplete 
+                    class="search-select"
+                    inputStyleClass="search-input"
+                    [(ngModel)]="city"
+                    [delay]="600"
+                    [autocomplete]="'on'"
+                    [optionLabel]="'displayName'"
+                    [suggestions]="cities$ | async"
+                    [forceSelection]="false"
+                    (completeMethod)="onCompleteMethod($event.query)"
+                    (onSelect)="onLocationSelect($event.value)"
+                    (onClear)="onClear()"
+                    placeholder="Search for cities (Berlin, Paris...)">
+                </p-autocomplete>
+            </div>
+        </div>
+        
+        <div class="dashboard-travel-plans">
+            <h2 class="title">My Travel Plans</h2>
+
+            @if ((selectedCities$ | async)?.length > 0) {
+                <div class="city-items">
+                    @for (city of (selectedCities$ | async); track city.id) {
+                        <city-item [city]="city"></city-item>
+                    }
+                </div>
+            } @else {
+                <div class="no-plans">
+                    <p>No travel plans yet. Start by searching for cities!</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>

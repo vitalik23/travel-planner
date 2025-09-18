@@ -1,0 +1,59 @@
+<div class="place-form">
+    <h3 class="form-title">{{ isEditMode ? 'Edit Place' : 'Add New Place' }}</h3>
+    
+    <form [formGroup]="placeForm" (ngSubmit)="onSavePlace()">
+        <div class="form-group">
+            <label>Search for a place:</label>
+            <p-autocomplete 
+                class="search-select"
+                inputStyleClass="search-input"
+                formControlName="displayName"
+                [optionLabel]="'displayName'"
+                [suggestions]="places$ | async"
+                (completeMethod)="onCompleteMethod($event.query)"
+                (onSelect)="onLocationSelect($event.value)"
+                placeholder="Search for places (restaurants, museums, parks...)"
+                [forceSelection]="false">
+            </p-autocomplete>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Visit Date:</label>
+                <p-datepicker 
+                    formControlName="date"
+                    [showIcon]="true"
+                    dateFormat="dd/mm/yy"
+                    placeholder="Select date"
+                    class="form-datepicker">
+                </p-datepicker>
+            </div>
+
+            <div class="form-group">
+                <label>Duration (hours):</label>
+                <p-select 
+                    formControlName="durationHours"
+                    [options]="hours"
+                    placeholder="Select duration"
+                    class="form-select">
+                </p-select>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <p-button 
+                type="submit" 
+                [label]="isEditMode ? 'Update' : 'Add'"
+                [disabled]="placeForm.invalid"
+                class="save-btn">
+            </p-button>
+            <p-button 
+                type="button" 
+                label="Cancel" 
+                severity="secondary"
+                class="cancel-btn"
+                (onClick)="onCancel()">
+            </p-button>
+        </div>
+    </form>
+</div>

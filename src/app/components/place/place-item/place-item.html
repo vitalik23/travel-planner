@@ -1,0 +1,14 @@
+<div class="place-item">
+    <div class="place-details">
+        <label class="place-item-title">{{ place.name }}</label>
+        <div class="place-item-date-duration">
+            <label class="place-item-date">{{ place.date | date:'dd/MM/yyyy' }}</label>
+            <span class="place-item-separator">•</span>
+            <label class="place-item-duration">{{ place.durationHours }} hours</label>
+        </div>
+    </div>
+    <div class="place-actions">
+        <p-button label="Edit" severity="info" icon="pi pi-pencil" (onClick)="onEditPlace()"></p-button>
+        <p-button label="Remove" severity="danger" icon="pi pi-trash" (onClick)="onRemovePlace(place.id)"></p-button>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+@use "../../../styles/variables.scss" as *;
+
+
+.place-form {
+    background-color: $background-color;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 16px 0;
+
+    .form-title {
+        margin: 0 0 20px 0;
+        color: #333;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .form-group {
+        margin-bottom: 16px;
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .form-input,
+        .search-select,
+        .form-datepicker,
+        .form-select {
+            width: 100%;
+        }
+    }
+
+    .form-row {
+        display: flex;
+        gap: 16px;
+
+        .form-group {
+            flex: 1;
+        }
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+        margin-top: 24px;
+
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .place-form {
+        padding: 16px;
+        margin: 12px 0;
+
+        .form-title {
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+
+        .form-row {
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .form-actions {
+            flex-direction: column;
+            gap: 8px;
+
+            .cancel-btn,
+            .save-btn {
+                width: 100%;
+            }
+        }
+    }
+}

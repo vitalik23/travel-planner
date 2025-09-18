@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@use 'app/styles/variables.scss';
+
+@import "primeicons/primeicons.css";
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap');
+
+html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Sofia Sans', sans-serif;
+}

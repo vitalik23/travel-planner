@@ -1,0 +1,261 @@
+@use "../../styles/variables.scss" as *;
+
+.dashboard {
+    background-color: $brand-color;
+    min-height: 100vh;
+    height: auto;
+    padding: 40px 20px;
+
+    .dashboard-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        .title {
+            font-size: 40px;
+            font-weight: 700;
+            color: #fff;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .description {
+            font-size: 16px;
+            font-weight: 400;
+            color: #fff;
+            margin: 0;
+            margin-top: 8px;
+            max-width: 600px;
+        }
+    }
+
+    .dashboard-content {
+        display: flex;
+        gap: 20px;
+        justify-content: space-between;
+        margin-top: 40px;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+
+        .dashboard-search-cities,
+        .dashboard-travel-plans {
+            width: 50%;
+            background-color: #f4f4f4;
+            padding: 24px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+
+            .title {
+                margin: 0;
+                color: $brand-color;
+                font-size: 24px;
+                font-weight: 600;
+            }
+        }
+
+        .dashboard-search-cities {
+            .form-group {
+                margin-top: 24px;
+
+                .search-select {
+                    width: 100%;
+                }
+            }
+        }
+
+        .dashboard-travel-plans {
+            .city-items {
+                margin-top: 24px;
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .no-plans {
+                margin-top: 24px;
+                text-align: center;
+                padding: 40px 20px;
+                color: #666;
+                background-color: #f9f9f9;
+                border-radius: 8px;
+                border: 2px dashed #ddd;
+
+                p {
+                    margin: 0;
+                    font-size: 16px;
+                    font-style: italic;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .dashboard {
+        padding: 30px 16px;
+
+        .dashboard-header {
+            .title {
+                font-size: 32px;
+            }
+
+            .description {
+                font-size: 15px;
+            }
+        }
+
+        .dashboard-content {
+            gap: 16px;
+            margin-top: 30px;
+
+            .dashboard-search-cities,
+            .dashboard-travel-plans {
+                padding: 20px;
+
+                .title {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard {
+        padding: 20px 12px;
+
+        .dashboard-header {
+            .title {
+                font-size: 28px;
+            }
+
+            .description {
+                font-size: 14px;
+                margin-top: 12px;
+            }
+        }
+
+        .dashboard-content {
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 24px;
+
+            .dashboard-search-cities,
+            .dashboard-travel-plans {
+                width: 100%;
+                padding: 16px;
+
+                .title {
+                    font-size: 18px;
+                }
+            }
+
+            .dashboard-search-cities {
+                .form-group {
+                    margin-top: 16px;
+                }
+            }
+
+            .dashboard-travel-plans {
+                .city-items {
+                    margin-top: 16px;
+                    gap: 12px;
+                }
+
+                .no-plans {
+                    margin-top: 16px;
+                    padding: 30px 15px;
+
+                    p {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard {
+        padding: 16px 8px;
+
+        .dashboard-header {
+            .title {
+                font-size: 24px;
+            }
+
+            .description {
+                font-size: 13px;
+            }
+        }
+
+        .dashboard-content {
+            margin-top: 20px;
+
+            .dashboard-search-cities,
+            .dashboard-travel-plans {
+                padding: 12px;
+
+                .title {
+                    font-size: 16px;
+                }
+            }
+
+            .dashboard-travel-plans {
+                .no-plans {
+                    padding: 20px 10px;
+
+                    p {
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+::ng-deep {
+    .search-input {
+        width: 100%;
+    }
+
+    // Responsive PrimeNG autocomplete
+    .p-autocomplete {
+        width: 100%;
+
+        .p-inputtext {
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .p-autocomplete-panel {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    }
+
+    // Mobile responsive adjustments
+    @media screen and (max-width: 768px) {
+        .p-autocomplete {
+            .p-inputtext {
+                font-size: 16px; // Prevents zoom on iOS
+                padding: 12px;
+            }
+
+            .p-autocomplete-panel {
+                max-height: 150px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .p-autocomplete {
+            .p-inputtext {
+                font-size: 16px;
+                padding: 10px;
+            }
+        }
+    }
+}

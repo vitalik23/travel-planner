@@ -1,0 +1,27 @@
+<div class="city-item">
+    <div class="city-item-header">
+        <h3 class="city-item-title">{{ city.displayName }}</h3>
+        <div class="city-item-actions">
+            <p-button label="Add Place" class="city-item-add-place-button" icon="pi pi-plus" severity="success" (onClick)="onAddPlace()"></p-button>
+            <p-button label="Remove" class="city-item-remove-city-button" severity="danger" icon="pi pi-trash" (onClick)="onRemoveCity(city.id)"></p-button>
+        </div>
+    </div>
+    <div class="city-item-places">
+        @if (!city.places || city.places?.length === 0) {
+            <p class="city-item-places-empty">No places added yet</p>
+        }
+        
+        @for (place of city.places; track place.id) {
+            <place-item [place]="place" [cityId]="city.id" (onEdit)="onEditPlace($event)"></place-item>
+        }
+
+        @if (isPlaceFormOpen) {
+            <place-form 
+                [city]="city" 
+                [place]="editingPlace"
+                (onClose)="onClosePlaceForm()"
+                (onSave)="onSavePlace($event)">
+            </place-form>
+        }
+    </div>
+</div>

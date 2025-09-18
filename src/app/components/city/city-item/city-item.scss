@@ -1,0 +1,45 @@
+@use "../../../styles/variables.scss" as *;
+
+.city-item {
+    display: flex;
+    flex-direction: column;
+
+    .city-item-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        background-color: $background-color;
+        padding: 16px;
+        border-top-right-radius: 20px;
+        border-top-left-radius: 20px;
+
+        .city-item-actions {
+            display: flex;
+            gap: 10px;
+
+            .city-item-add-place-button {
+                min-width: 120px;
+            }
+
+            .city-item-remove-city-button {
+                min-width: 100px;
+            }
+        }
+    }
+
+    .city-item-places {
+        padding: 16px;
+        background-color: #ffffff;
+        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        .city-item-places-empty {
+            text-align: center;
+            color: #666;
+        }
+    }
+}
